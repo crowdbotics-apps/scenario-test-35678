@@ -14,14 +14,14 @@ class Plan(models.Model):
         blank=True,
     )
     created_at = models.DateTimeField(
-        auto_now_add=True,
         null=True,
         blank=True,
+        auto_now_add=True,
     )
     updated_at = models.DateTimeField(
-        auto_now=True,
         null=True,
         blank=True,
+        auto_now=True,
     )
 
 
