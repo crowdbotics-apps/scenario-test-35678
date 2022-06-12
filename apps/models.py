@@ -1,9 +1,12 @@
 from django.conf import settings
 from django.db import models
 
-
 class App(models.Model):
     "Generated Model"
+
+    AppTypes = ["Web", "Mobile"]
+    FrameworkTypes = ["Django", "React Native"]
+
     name = models.TextField(
         null=False,
         blank=False,
@@ -12,16 +15,18 @@ class App(models.Model):
     type = models.TextField(
         null=False,
         blank=False,
+        choices=AppTypes,
     )
     framework = models.TextField(
         null=True,
         blank=True,
+        choices=FrameworkTypes,
     )
     domain_name = models.TextField(
         null=True,
         blank=True,
     )
-    screenshot = models.TextField(
+    screenshot = models.FileField(
         null=True,
         blank=True,
     )
@@ -49,5 +54,6 @@ class App(models.Model):
         blank=True,
         auto_now=True,
     )
+
 
 # Create your models here.
