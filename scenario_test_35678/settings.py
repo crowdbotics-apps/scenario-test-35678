@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "apps",
+    "plans",
 ]
 LOCAL_APPS = [
     "home",
