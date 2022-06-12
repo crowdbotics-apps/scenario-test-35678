@@ -1,17 +1,29 @@
 from django.conf import settings
 from django.db import models
 
+
+
 class App(models.Model):
     "Generated Model"
 
-    AppTypes = ["Web", "Mobile"]
-    FrameworkTypes = ["Django", "React Native"]
+    AppTypes = (
+            ("Web", "Web Application"),
+            ("Mobile", "Mobile Application"),
+    )
+
+    FrameworkTypes = (
+            ("Django", "Django Framework"),
+            ("React Native", "React Native Framework"),
+    )
 
     name = models.TextField(
         null=False,
         blank=False,
     )
-    description = models.TextField()
+    description = models.TextField(
+         null=True,
+        blank=True,
+    )
     type = models.TextField(
         null=False,
         blank=False,
@@ -27,20 +39,14 @@ class App(models.Model):
         blank=True,
     )
     screenshot = models.FileField(
-        null=True,
-        blank=True,
     )
     subscription = models.ForeignKey(
         "subscriptions.Subscription",
-        null=True,
-        blank=True,
         on_delete=models.SET_NULL,
         related_name="app_subscription",
     )
     user = models.ForeignKey(
         "users.User",
-        null=True,
-        blank=True,
         on_delete=models.SET_NULL,
         related_name="app_user",
     )

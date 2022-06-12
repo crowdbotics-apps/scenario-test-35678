@@ -6,8 +6,12 @@ class Plan(models.Model):
     "Generated Model"
     name = models.TextField()
     description = models.TextField(
-        null=True,
-        blank=True,
+        null=False,
+        blank=False,
+    )
+    description = models.TextField(
+        null=False,
+        blank=False,
     )
     price = models.TextField(
         null=True,

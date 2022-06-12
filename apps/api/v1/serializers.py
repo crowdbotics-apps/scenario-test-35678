@@ -7,8 +7,12 @@ class AppSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     name = serializers.CharField(required=True, max_length=50, min_length=1)
-    type = serializers.CharField(required=True)
-    framework = serializers.CharField(required=True)
-    domain_name = serializers.CharField(max_length=50)
+    description = serializers.CharField(required=False)
+    type = serializers.ChoiceField(required=True, choices=App.AppTypes)
+    framework = serializers.ChoiceField(required=True, choices=App.FrameworkTypes)
+    domain_name =  serializers.CharField()
+    screenshot =  serializers.URLField(read_only=True)
+    subscription = serializers.IntegerField(required=False)
+    user = serializers.IntegerField(required=False)
 
     
