@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from apps.models import App
+from enum import Enum
 
 
 class AppSerializer(serializers.ModelSerializer):
@@ -7,18 +8,20 @@ class AppSerializer(serializers.ModelSerializer):
         model = App
         fields = "__all__"
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-    name = models.CharField(required=True, max_length=50, min_length=1)
-    type = EnumChoiceField(AppTypes, required=True)
-    framework = EnumChoiceField(FrameworkTypes, required=True)
-    domain_name = models.CharField(max_length=50)
-    screenshot = models.CharField(read_only=True)
-
-    class AppTypes(ChoiceEnum):
+    class AppTypes(Enum):
         web="Web"
         mobile="Mobile"
 
-    class FrameworkTypes(ChoiceEnum):
+    class FrameworkTypes(Enum):
         django="Django"
         react="React Native"
 
+
+    id = serializers.UUIDField(primary_key=True, editable=False, unique=True)
+    name = serializers.CharField(required=True, max_length=50, min_length=1)
+    type = serializers.numChoiceField(AppTypes, required=True)
+    framework = serializers.EnumChoiceField(FrameworkTypes, required=True)
+    domain_name = serializers.CharField(max_length=50)
+    screenshot = serializers.CharField(read_only=True)
+
+    
