@@ -42,11 +42,13 @@ class App(models.Model):
     )
     subscription = models.ForeignKey(
         "subscriptions.Subscription",
+        null=True,
         on_delete=models.SET_NULL,
         related_name="app_subscription",
     )
     user = models.ForeignKey(
         "users.User",
+        null=True,
         on_delete=models.SET_NULL,
         related_name="app_user",
     )
