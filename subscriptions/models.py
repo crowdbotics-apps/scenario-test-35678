@@ -11,16 +11,16 @@ class Subscription(models.Model):
     )
     plan = models.ForeignKey(
         "plans.Plan",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="subscription_plan",
     )
     app = models.ForeignKey(
         "apps.App",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="subscription_app",
     )
     active = models.BooleanField(
@@ -28,14 +28,14 @@ class Subscription(models.Model):
         blank=True,
     )
     created_at = models.DateTimeField(
-        auto_now_add=True,
         null=True,
         blank=True,
+        auto_now_add=True,
     )
     updated_at = models.DateTimeField(
-        auto_now=True,
         null=True,
         blank=True,
+        auto_now=True,
     )
 
 
