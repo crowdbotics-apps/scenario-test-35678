@@ -9,54 +9,66 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('subscriptions', '0001_initial'),
-        ('apps', '0001_initial'),
+        ("subscriptions", "0001_initial"),
+        ("apps", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='app',
-            name='created_at',
+            model_name="app",
+            name="created_at",
             field=models.DateTimeField(auto_now_add=True, null=True),
         ),
         migrations.AddField(
-            model_name='app',
-            name='description',
+            model_name="app",
+            name="description",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='app',
-            name='domain_name',
+            model_name="app",
+            name="domain_name",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='app',
-            name='framework',
+            model_name="app",
+            name="framework",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='app',
-            name='screenshot',
+            model_name="app",
+            name="screenshot",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='app',
-            name='subscription',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='app_subscription', to='subscriptions.Subscription'),
+            model_name="app",
+            name="subscription",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="app_subscription",
+                to="subscriptions.Subscription",
+            ),
         ),
         migrations.AddField(
-            model_name='app',
-            name='type',
+            model_name="app",
+            name="type",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='app',
-            name='updated_at',
+            model_name="app",
+            name="updated_at",
             field=models.DateTimeField(auto_now=True, null=True),
         ),
         migrations.AddField(
-            model_name='app',
-            name='user',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='app_user', to=settings.AUTH_USER_MODEL),
+            model_name="app",
+            name="user",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="app_user",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

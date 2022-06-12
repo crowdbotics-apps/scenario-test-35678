@@ -27,27 +27,27 @@ class App(models.Model):
     )
     subscription = models.ForeignKey(
         "subscriptions.Subscription",
-        on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        on_delete=models.SET_NULL,
         related_name="app_subscription",
     )
     user = models.ForeignKey(
         "users.User",
-        on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        on_delete=models.SET_NULL,
         related_name="app_user",
     )
     created_at = models.DateTimeField(
-        auto_now_add=True,
         null=True,
         blank=True,
+        auto_now_add=True,
     )
     updated_at = models.DateTimeField(
-        auto_now=True,
         null=True,
         blank=True,
+        auto_now=True,
     )
 
 
