@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-
+from subscriptions.models import Subscription
 
 
 class App(models.Model):
@@ -21,7 +21,7 @@ class App(models.Model):
         blank=False,
     )
     description = models.TextField(
-         null=True,
+        null=True,
         blank=True,
     )
     type = models.TextField(
@@ -40,12 +40,9 @@ class App(models.Model):
     )
     screenshot = models.FileField(
     )
-    subscription = models.ForeignKey(
-        "subscriptions.Subscription",
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name="app_subscription",
-    )
+
+    subscription = models.OneToOneField('subscriptions.Subscription', null=True, on_delete=models.SET_NULL, related_name="app_subscription")
+
     user = models.ForeignKey(
         "users.User",
         null=True,
@@ -62,6 +59,3 @@ class App(models.Model):
         blank=True,
         auto_now=True,
     )
-
-
-# Create your models here.
