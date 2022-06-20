@@ -77,7 +77,7 @@ class AppViewSet(viewsets.ViewSet):
 
         try:
             subscription = Subscription.objects.get(app=pk)
-            app.subscription = subscription.id
+            app.subscription = subscription
         except ObjectDoesNotExist:
             pass
 
