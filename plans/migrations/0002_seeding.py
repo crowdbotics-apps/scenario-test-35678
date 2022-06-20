@@ -10,7 +10,7 @@ def load_fixture(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        # Dependencies to other migrations
+        ('subscriptions', '0001_initial')
     ]
 
     operations = [
